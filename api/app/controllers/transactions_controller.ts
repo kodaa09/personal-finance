@@ -77,7 +77,6 @@ export default class TransactionsController {
           description,
           date,
           recurrent,
-          userId: user.id,
         })
         .save()
       return response.status(200).json({ message: 'Transaction updated successfully' })
