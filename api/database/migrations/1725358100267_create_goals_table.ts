@@ -10,7 +10,7 @@ export default class extends BaseSchema {
       table.string('description')
       table.string('color').defaultTo('#ffff')
       table.decimal('target').notNullable()
-      !table.date('deadline').notNullable()
+      table.timestamp('deadline').notNullable()
       table.uuid('user_id').unsigned().references('users.id').onDelete('CASCADE')
 
       table.timestamp('created_at')
