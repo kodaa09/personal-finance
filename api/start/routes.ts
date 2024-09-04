@@ -31,7 +31,7 @@ router
     router.patch('/goals/:id', [GoalsController, 'update'])
     router.delete('/goals/:id', [GoalsController, 'destroy'])
 
-    router.get('/goal-transactions', [GoalTransactionsController, 'index'])
+    // router.get('/goal-transactions', [GoalTransactionsController, 'index'])
     router.get('/goal-transactions/:id', [GoalTransactionsController, 'show'])
     router.post('/goal-transactions', [GoalTransactionsController, 'store'])
     router.patch('/goal-transactions/:id', [GoalTransactionsController, 'update'])
