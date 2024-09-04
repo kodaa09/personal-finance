@@ -1,6 +1,5 @@
 <script setup lang="ts">
 
-import SideMenu from "~/components/SideMenu.vue";
 </script>
 
 <template>
@@ -9,7 +8,7 @@ import SideMenu from "~/components/SideMenu.vue";
       <SideMenu/>
     </div>
     <div class="w-9/12">
-      dashboard page
+      transaction page
     </div>
   </div>
 </template>
