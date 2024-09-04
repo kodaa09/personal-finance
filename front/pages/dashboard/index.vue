@@ -1,17 +1,9 @@
-<script setup lang="ts">
-
-import SideMenu from "~/components/SideMenu.vue";
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <div class="flex h-full gap-10">
-    <div class="w-3/12 relative">
-      <SideMenu/>
-    </div>
-    <div class="w-9/12">
-      dashboard page
-    </div>
-  </div>
+  <NuxtLayout>
+    dashboard page
+  </NuxtLayout>
 </template>
 
 <style scoped>

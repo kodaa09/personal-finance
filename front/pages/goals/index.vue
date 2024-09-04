@@ -4,7 +4,7 @@
 
 <template>
   <NuxtLayout>
-    transaction page
+    Goal page
   </NuxtLayout>
 </template>
 

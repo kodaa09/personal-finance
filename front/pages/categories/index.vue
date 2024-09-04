@@ -4,7 +4,7 @@
 
 <template>
   <NuxtLayout>
-    transaction page
+    Category page
   </NuxtLayout>
 </template>
 
