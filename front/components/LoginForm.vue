@@ -2,9 +2,9 @@
 import {useForm, useIsFormValid} from 'vee-validate';
 import {toTypedSchema} from '@vee-validate/yup';
 import * as yup from 'yup';
-import type {Ref} from "vue";
+import {useAuth} from "~/store/auth";
 
-const endpoint = useRuntimeConfig().public.apiBase
+const authStore = useAuth();
 const emits = defineEmits(['update:page'])
 
 const schema = toTypedSchema(yup.object(
@@ -18,30 +18,12 @@ const {errors, defineField} = useForm({
   validationSchema: schema,
 });
 
-const loginError = useState('loginError', () => '')
 const [email, emailAttrs] = defineField('email');
 const [password, passwordAttrs] = defineField('password');
 const isValid = useIsFormValid();
 
 const onLogin = async () => {
-  const {status, error} = await useFetch(`${endpoint}/login`, {
-    method: 'POST',
-    body: {
-      email: email.value,
-      password: password.value
-    },
-    credentials: 'include'
-  })
-
-  await checkLoginResponse(status.value, error)
-}
-
-const checkLoginResponse = async (status: string, error: Ref) => {
-  if (status === 'success') {
-    await navigateTo('/dashboard')
-  } else {
-    loginError.value = error?.value?.data.errors[0].message
-  }
+  await authStore.authenticate(email, password);
 }
 
 const updatePage = () => {
@@ -68,7 +50,7 @@ const updatePage = () => {
       <UButton class="w-full justify-center" type="submit" :disabled="!isValid">
         Login
       </UButton>
-      <ErrorMessage class="mt-3" :message="loginError"/>
+      <ErrorMessage class="mt-3" :message="authStore.loginError"/>
     </form>
     <p class="text-center">Need to create an account?
       <button class="underline" @click="updatePage()">Sign Up</button>
