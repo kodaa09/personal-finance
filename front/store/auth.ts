@@ -26,12 +26,26 @@ export const useAuth = defineStore('auth', () => {
     }
   }
 
+  const me = async () => {
+    const headers = useRequestHeaders(['cookie'])
+    const {data, status} = await useFetch<loginResponse>('http://localhost:3333/api/me', {
+      credentials: 'include',
+      headers
+    })
+
+    if (status.value === "success") {
+      return data
+    } else {
+      return null
+    }
+  }
+
   return {
     user,
     loginError,
-    authenticate
+    authenticate,
+    me
   }
-
 })
 
 interface loginResponse {
