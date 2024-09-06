@@ -6,7 +6,7 @@ definePageMeta({
 
 <template>
   <NuxtLayout>
-    dashboard page
+    <h2>Overview</h2>
   </NuxtLayout>
 </template>
 

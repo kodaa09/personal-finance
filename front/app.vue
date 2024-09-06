@@ -1,6 +1,7 @@
 <template>
   <div class="h-full">
     <NuxtPage/>
+    <UModals/>
   </div>
 </template>
 
